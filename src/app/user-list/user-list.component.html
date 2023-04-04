@@ -1,0 +1,39 @@
+<div class="wrap">
+    <div class="input">
+        <form name="loginForm">
+            <p>Login</p>
+            <input [(ngModel)]="login" type="text" name="login" placeholder="Enter login">
+            <p>Password</p>
+            <input [(ngModel)]="password" type="password" name="password" placeholder="Enter password">
+            <p>Email adress</p>
+            <input [(ngModel)]="email" type="text" name="email" placeholder="Enter email">
+            <input *ngIf="!editCheck" (click)="addUser()" type="button" value="Add user" name="add">
+            <input *ngIf="editCheck" (click)="saveEdit()" type="button" value="Edit user" name="edit">
+        </form>
+    </div>
+
+    <div class="table">
+        <table class="table__table">
+            <td colspan="6" class="table__line"></td>
+            <tr class="table__header">
+                <td>#</td>
+                <td>Login</td>
+                <td>Password</td>
+                <td>Email</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+            <td colspan="6" class="table__line"></td>
+
+            <tr *ngFor="let elem of dataArr; index as i" class="table__main">
+                <td class='id'>{{ i + 1 }}</td>
+                <td>{{ elem.login }}</td>
+                <td>{{ elem.password }}</td>
+                <td>{{ elem.email }}</td>
+                <td><button (click)="editUser(i)" type="button" class="table__main__edit">Edit</button></td>
+                <td><button [disabled]="editCheck" (click)="deleteUser(i)" type="button" class="table__main__delete">Delete</button></td>
+            </tr>
+
+        </table>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+@mixin flex($fd, $jc, $ai, $g) {
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $g;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrap {
+    @include size(100%, 100%);
+    @include flex(row, center, top, 20px);
+    padding-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 100px auto;
+}
+
+.input {
+    @include size(45%, 100%);
+
+    form[name="loginForm"] {
+        @include flex(column, space-between, left, 20px);
+
+        p {
+            font-weight: 500;
+        }
+
+        input {
+            @include size(100%, 30px);
+            padding-left: 10px;
+        }
+
+        input[type="button"] {
+            @include size(30%, 30px);
+            border: 1px solid red;
+            border-radius: 5px;
+            background-color: transparent;
+            color: red;
+            padding: 0;
+        }
+
+        input[name="edit"] {
+            border: 1px solid green;
+            color: green;
+        }
+    }
+}
+
+.table {
+    @include size(45%, 100%);
+
+    table {
+        @include size(100%, auto);
+    }
+
+    &__header {
+        font-weight: bold;
+
+        td {
+            @include size(20%, 30px);
+            text-align: center;
+        }
+    }
+
+    &__main {
+        td {
+            @include size(20%, 30px);
+            text-align: center;
+        }
+
+        &__edit {
+            @include size(80%, 30px);
+            border: none;
+            border-radius: 5px;
+            background-color: orange;
+            color: black;
+        }
+
+        &__delete {
+            @include size(80%, 30px);
+            border: none;
+            border-radius: 5px;
+            background-color: red;
+            color: white;
+        }
+    }
+
+    &__line {
+        border-top: 1px solid #000;
+    }
+
+}
